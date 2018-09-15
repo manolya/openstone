@@ -1,0 +1,15 @@
+{
+"name":"Nine-Tailed Fox",
+"description":"A MTF Epsilon-11 squad",
+"atk":"3",
+"hp":"2",
+"img":"Gearboi"
+}
+,
+{
+"name":"Predator Genji",
+"description":"Negates Stealth with Infrared Vision",
+"atk":"10",
+"hp":"1",
+"img":"rushb"
+}
