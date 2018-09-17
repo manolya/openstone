@@ -47,9 +47,9 @@ public class UIFunctions : MonoBehaviour {
 	string infojson = File.ReadAllText(_path + @"\packinfo.json");
 	string images = _path + @"\images";
 	string cardjson = File.ReadAllText(_path + @"\packs\cardpack.json");
-    List<Cardjson> cards = JsonConvert.DeserializeObject<List<Cardjson>>(cardjson);
+	List<Cardjson> card = JsonConvert.DeserializeObject<List<Cardjson>>(cardjson);
     PackInfo packinfo = JsonConvert.DeserializeObject<PackInfo>(infojson);
-	print(cards.ToArray()[1].atk);
+	print(card.atk);
     TextMeshProUGUI infotext = GameObject.Find("Info").GetComponent<TextMeshProUGUI>();
     infotext.text = packinfo.name+"\n"+packinfo.desc+"\n v"+packinfo.version;
 	}
