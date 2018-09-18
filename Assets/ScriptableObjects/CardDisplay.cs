@@ -27,5 +27,9 @@ public class CardDisplay : MonoBehaviour {
 		attackText.text = card.attack.ToString();
 		healthText.text = card.health.ToString();
 	}
+    void RecieveStats()
+    {
+
+    }
 	
 }
