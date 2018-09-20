@@ -488,9 +488,9 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 3
   m_StartCorner: 0
-  m_StartAxis: 0
+  m_StartAxis: 1
   m_CellSize: {x: 100, y: 100}
   m_Spacing: {x: 25, y: 25}
   m_Constraint: 0
@@ -1479,7 +1479,7 @@ Prefab:
     - target: {fileID: 224306889920499572, guid: e62c548595ac7fa478de9442b2a11823,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: -87.5
       objectReference: {fileID: 0}
     - target: {fileID: 224306889920499572, guid: e62c548595ac7fa478de9442b2a11823,
         type: 2}
@@ -2307,7 +2307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175, y: -50}
+  m_AnchoredPosition: {x: 50, y: -212.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1879959799
@@ -2328,6 +2328,13 @@ MonoBehaviour:
   manaText: {fileID: 1447059358}
   attackText: {fileID: 531770843}
   healthText: {fileID: 229733002}
+  name: 
+  description: 
+  artwork: {fileID: 0}
+  manaCost: 0
+  attack: 0
+  health: 0
+  maxindeck: 0
 --- !u!222 &1879959800
 CanvasRenderer:
   m_ObjectHideFlags: 0

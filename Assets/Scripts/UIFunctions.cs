@@ -100,6 +100,10 @@ public class Cardjson
     public string description { get; set; }
     [JsonProperty("img")]
     public string img { get; set; }
+    [JsonProperty("manacost")]
+    public int manacost { get; set; }
+    [JsonProperty("maxindeck")]
+    public int maxindeck { get; set; }
 }
 public class PackInfo
 {
