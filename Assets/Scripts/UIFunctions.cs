@@ -10,6 +10,7 @@ using SFB;
 using System;
 using Newtonsoft.Json;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIFunctions : MonoBehaviour
 {
@@ -47,19 +48,27 @@ public class UIFunctions : MonoBehaviour
     {
         WriteResult(StandaloneFileBrowser.OpenFolderPanel("Select Pack Folder", "", false));
         string infojson = File.ReadAllText(_path + @"\packinfo.json");
-        string images = _path + @"\images";
+        string images = _path + @"\images\";
         string cardjson = File.ReadAllText(_path + @"\packs\cardpack.json");
         List<Cardjson> cards = JsonConvert.DeserializeObject<List<Cardjson>>(cardjson);
         PackInfo packinfo = JsonConvert.DeserializeObject<PackInfo>(infojson);
         var cardarray = cards.ToArray();
-        print(cards.ToArray()[0].name);
         TextMeshProUGUI infotext = GameObject.Find("Info").GetComponent<TextMeshProUGUI>();
         infotext.text = packinfo.name + "\n" + packinfo.desc + "\n v" + packinfo.version;
+        GameObject excard = GameObject.Find("Card");
 
-        foreach(Cardjson element in cardarray)
-        {
-            //ScriptableObject.CreateInstance("Card");
+        int i = 0;
+        foreach (Cardjson element in cardarray)
+        {          
+            Instantiate(excard,GameObject.Find("Content").transform);
+            excard.name = ("Card " + i);
+            GameObject.Find(excard.name).SendMessage("GetID", i);
+            cards.ToArray()[i].img = images + cardarray[i].img;
+            GameObject.Find(excard.name).SendMessage("RecieveStats", cards);
+            print(cardarray[i].name);
+            i++;
         }
+        //Destroy(GameObject.Find("Card(Clone)"));
     }
     void DefineSaveLocation()
     {
@@ -104,6 +113,7 @@ public class Cardjson
     public int manacost { get; set; }
     [JsonProperty("maxindeck")]
     public int maxindeck { get; set; }
+
 }
 public class PackInfo
 {
