@@ -43,18 +43,30 @@ public class CardDisplay : MonoBehaviour {
     {
         cardID = cardid;
     }
-    void RecieveStats(List<Cardjson> cardstats)
+    IEnumerator RecieveStats(List<Cardjson> cardstats)
     {
         Cardjson[] cardstatsarray = cardstats.ToArray();
-
-        Texture2D tex = new Texture2D(2,2);
-        tex.LoadImage(File.ReadAllBytes(cardstatsarray[cardID].img));
+        WWW image = new WWW(cardstatsarray[cardID].img);
+        while (!image.isDone)
+        {
+            yield return null;
+        }
+        print(cardstatsarray[cardID].img);
         name = cardstatsarray[cardID].name;
         description = cardstatsarray[cardID].description;
-        //artworkImage.overrideSprite = Sprite.Create(tex,transform.GetChild(0).GetChild(0).GetComponent<RectTransform>().rect,new Vector3(0.5f,0.5f));
+        artworkImage.GetComponent<RawImage>().texture = image.texture;
         manaCost = cardstatsarray[cardID].manacost;
         attack = cardstatsarray[cardID].atk;
         health = cardstatsarray[cardID].hp;
         maxindeck = cardstatsarray[cardID].maxindeck;
+
+        nameText.text = name;
+        descriptionText.text = description;
+
+        artworkImage.sprite = artwork;
+
+        manaText.text = manaCost.ToString();
+        attackText.text = attack.ToString();
+        healthText.text = health.ToString();
     }       
 }

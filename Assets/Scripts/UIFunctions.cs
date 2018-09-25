@@ -4,8 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Xml;
-using System.Xml.Serialization;
 using SFB;
 using System;
 using Newtonsoft.Json;
@@ -63,12 +61,13 @@ public class UIFunctions : MonoBehaviour
             Instantiate(excard,GameObject.Find("Content").transform);
             excard.name = ("Card " + i);
             GameObject.Find(excard.name).SendMessage("GetID", i);
-            cards.ToArray()[i].img = images + cardarray[i].img;
+            cardarray[i].img = images + cardarray[i].img;
+            print(cardarray[i].img);
             GameObject.Find(excard.name).SendMessage("RecieveStats", cards);
             print(cardarray[i].name);
             i++;
         }
-        //Destroy(GameObject.Find("Card(Clone)"));
+        Destroy(GameObject.Find("Card(Clone)"));
     }
     void DefineSaveLocation()
     {
