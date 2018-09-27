@@ -1,4 +1,5 @@
-[{
+[
+{
 "name":"Nine-Tailed Fox",
 "description":"A MTF Epsilon-11 squad",
 "atk":"3",
@@ -6,12 +7,25 @@
 "img":"ntf.png",
 "manacost":"2",
 "maxindeck":"9"
-},{
+}
+,
+{
 "name":"Predator Genji",
 "description":"Negates Stealth with Infrared Vision",
 "atk":"10",
 "hp":"1",
 "img":"genji.png",
-"manacost":"2",
-"maxindeck":"2"
-}]
+"manacost":"5",
+"maxindeck":"1"
+}
+,
+{
+"name":"Ugandan Knuckles",
+"description":"He will show you da wae",
+"atk":"5",
+"hp":"2",
+"img":"ugandanknuckles.jpg",
+"manacost":"3",
+"maxindeck":"20"
+}
+]

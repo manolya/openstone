@@ -5,6 +5,7 @@ using System.IO;
 using UnityEditor.Experimental.UIElements.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public class CardDisplay : MonoBehaviour {
 
@@ -43,18 +44,21 @@ public class CardDisplay : MonoBehaviour {
     {
         cardID = cardid;
     }
-    IEnumerator RecieveStats(List<Cardjson> cardstats)
+    void RecieveStats(List<Cardjson> cardstats)
     {
         Cardjson[] cardstatsarray = cardstats.ToArray();
-        WWW image = new WWW(cardstatsarray[cardID].img);
-        while (!image.isDone)
-        {
-            yield return null;
-        }
         print(cardstatsarray[cardID].img);
         name = cardstatsarray[cardID].name;
         description = cardstatsarray[cardID].description;
-        artworkImage.GetComponent<RawImage>().texture = image.texture;
+        try
+        {
+
+        }
+        catch (Exception e)
+        {
+            print(e.ToString() + "  boop");
+        }
+
         manaCost = cardstatsarray[cardID].manacost;
         attack = cardstatsarray[cardID].atk;
         health = cardstatsarray[cardID].hp;
@@ -63,7 +67,7 @@ public class CardDisplay : MonoBehaviour {
         nameText.text = name;
         descriptionText.text = description;
 
-        artworkImage.sprite = artwork;
+        artworkImage.sprite = cardstatsarray[cardID].artworkimg;
 
         manaText.text = manaCost.ToString();
         attackText.text = attack.ToString();
